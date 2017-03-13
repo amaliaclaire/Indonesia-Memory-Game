@@ -1,0 +1,39 @@
+
+.back{
+  transform:rotateY(180deg);
+}
+
+.card{
+  margin: 20px;
+  width: 250px;
+  height: 250px;
+  transition: all 0.6s ease;
+  transform-style: preserve-3d;
+
+}
+.card-container{
+  perspective: 700;
+  display: flex;
+  justify-content: center;
+
+}
+
+/*.card:hover{
+  transform:rotateY(180deg);
+}*/
+
+.front, .back{
+  position: absolute;
+  background-color: pink;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 250px;
+  backface-visibility: hidden;
+}
+
+.front img{
+  width: 250px;
+  height: 250px;
+  background: black;
+}

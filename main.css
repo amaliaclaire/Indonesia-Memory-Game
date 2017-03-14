@@ -1,7 +1,14 @@
+/*body{
+  margin:0;
+  padding:0;
+  border: 0;
+}*/
+
 
 .back{
   transform:rotateY(180deg);
 }
+
 
 .card{
   margin: 20px;
@@ -18,17 +25,26 @@
 
 }
 
+.cardBackImage{
+  width: 250px;
+  height:250px;
+}
+
 /*.card:hover{
   transform:rotateY(180deg);
 }*/
 
 .front, .back{
   position: absolute;
-  background-color: pink;
+  /*background-color: pink;*/
   top: 0;
   left: 0;
   width: 250px;
   height: 250px;
+  /*backface-visibility: hidden;*/
+}
+
+.invisible {
   backface-visibility: hidden;
 }
 

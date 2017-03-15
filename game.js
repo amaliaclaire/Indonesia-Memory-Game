@@ -32,7 +32,7 @@ function displaySixIndoImages(){
     cardImagesAnswers.push(shuffledIndoArray[i])
     cardImagesAnswers.push(shuffledIndoArray[i])
   }
-  
+
   console.log(cardImagesAnswers);
   cardImagesAnswers = shuffle(cardImagesAnswers)
 
@@ -42,7 +42,7 @@ function displaySixIndoImages(){
     let currentImageURL = cardImagesAnswers[i];
 
   //building HTML//
-    let card = $('<div class="card"></div>');
+    let card = $('<div class="card col-xs-4"></div>');
     let front = $('<div class="front invis"></div>');
     let frontImg = $('<img class="frontImg" src="barong-image-cut.png" />');
     let back = $('<div class="back invis"></div>');
@@ -61,6 +61,34 @@ function displaySixIndoImages(){
       back.toggleClass('invis')
     });
   }
+
+  // let indoImageColumnAndArray =`<div>cardImagesAnswer</div>`
+  // let rowOpen = `<div class="row">`
+  // let colOpen = `<div class="col-xs-4">`
+  // let divClose = `</div>`
+  // let br = `</br>`
+  //
+  // let arrOfCol = []
+  // for (let i = 0; i < shuffledIndoArray.length; i++) {
+  //     arrOfCol.push(colOpen + br + indoImageColumnAndArray + divClose)
+  // }
+  //
+  // var html = rowOpen
+  // for (var i = 0; i < arrOfCol.length; i++) {
+  //   var col = arrOfCol[i]
+  //   html += col
+  //
+  //   if (i % 4 === 0) {
+  //     html += divClose
+  //     if (i !== arrOfCol.length - 1) {
+  //       html += rowOpen
+  //     } else {
+  //     html += divClose
+  //     }
+  //   }
+  // }
+
+  //  $('#card-container').append(html)
 }
 
 

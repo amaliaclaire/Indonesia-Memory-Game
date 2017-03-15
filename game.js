@@ -39,7 +39,7 @@ function displaySixIndoImages(counter){
     $myDivCardContainer.append($card);
 
     //add event listener to each of the cards to listen to the click  -- flip function; you're going to listen to that click -- and on the click Url.[0].src save it as your card one.
-    $frontImg.addEventListener('click', flipCard) //function flip card, do what's in the flip card function -- we want to add the event listener and when I CLICK i want to do the match. 
+    // $frontImg.addEventListener('click', flipCard) //function flip card, do what's in the flip card function -- we want to add the event listener and when I CLICK i want to do the 
 
     $(`.frontImg`).click(function flipCard(event) {
       event.stopImmediatePropagation();

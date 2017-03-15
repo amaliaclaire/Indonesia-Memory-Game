@@ -22,15 +22,30 @@ function addURLToArray(index, hit){
   indoPicsArray.push(hit.webformatURL) // this function will run for every item in data.hits ASK INSTRUCTOR HOW DATA.HITS AND hit is connected
 }
 
+
+
 function displaySixIndoImages(){
+//PUT MATCHING PAIRS UP HERE
+
+  let cardImagesAnswers = [];
+  for(var i = 0; i < 6; i++){
+    cardImagesAnswers.push(shuffledIndoArray[i])
+    cardImagesAnswers.push(shuffledIndoArray[i])
+  }
+  
+  console.log(cardImagesAnswers);
+  cardImagesAnswers = shuffle(cardImagesAnswers)
+
   let myDivCardContainer = $('.card-container');
 
-  for (var i = 1; i <= 6; i++) {
-    let currentImageURL = shuffledIndoArray[i];
+  for (var i = 0; i < cardImagesAnswers.length; i++) {
+    let currentImageURL = cardImagesAnswers[i];
+
+  //building HTML//
     let card = $('<div class="card"></div>');
-    let front = $('<div class="front invisible"></div>');
+    let front = $('<div class="front invis"></div>');
     let frontImg = $('<img class="frontImg" src="barong-image-cut.png" />');
-    let back = $('<div class="back invisible"></div>');
+    let back = $('<div class="back invis"></div>');
     let backImg = $(`<img class="cardBackImage" data-image-id="${i}"  src="${currentImageURL}" />`);
 
     front.append(frontImg);
@@ -43,12 +58,11 @@ function displaySixIndoImages(){
       e.stopImmediatePropagation();
       frontImg.hide()
       // backImg.show()
-      back.toggleClass('invisible')
-
-
+      back.toggleClass('invis')
     });
   }
 }
+
 
 function shuffle(array) { //downloaded this off stack overflow
   var currentIndex = array.length, temporaryValue, randomIndex;

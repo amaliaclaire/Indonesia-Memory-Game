@@ -1,5 +1,5 @@
 html {
-  background: url("homepage-barong.png") no-repeat center center fixed;
+  background: url("gaurd-statue.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -11,6 +11,5 @@ button{
 text-align: center;
 position: fixed;
 top: 50%;
-
 
 }

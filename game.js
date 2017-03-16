@@ -120,6 +120,12 @@ function shuffle(array) {
   return array;
 }
 
+function resetCards(){
+  location.reload();
+}
+
+
+
 function fetchImageUrls(url){
   $.getJSON(url, function(data){
     if( data.hits.length > 0 ) {
@@ -136,5 +142,5 @@ function fetchImageUrls(url){
 
   });
 }
-
+$('#restart').on('click', resetCards);
 fetchImageUrls(URL);

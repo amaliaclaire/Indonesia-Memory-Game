@@ -1,16 +1,14 @@
-let addBarongCards;
 let URL = "https://pixabay.com/api//?key=3524767-02f5ba794561ee4931dcf448b\&q=indonesia\&image_type=photo"
 let indoPicsArray = [];
 let shuffledIndoArray = [];
 let selectedCardsFlip = [];
 let counter = 0;
+let card1Back;
+let card2Back;
 
 function addURLToArray(index, hit){
   indoPicsArray.push(hit.webformatURL)
 }
-
-
-
 
 
 function displaySixIndoImages(counter){
@@ -41,20 +39,11 @@ function displaySixIndoImages(counter){
     $card.append($front, $back);
     $myDivCardContainer.append($card);
 
-    //add event listener to each of the cards to listen to the click  -- flip function; you're going to listen to that click -- and on the click Url.[0].src save it as your card one.
-    // $frontImg.addEventListener('click', flipCard) //function flip card, do what's in the flip card function -- we want to add the event listener and when I CLICK i want to do the
+
 
     $(`.frontImg`).click(function flipCard(event) {
       event.stopImmediatePropagation();
-      //MOVE IT OUT OF THE FOR LOOP - DO PROPERGATION ATTACH TO BODY and specify which one's to target.
-      // track flipped cards
 
-      // show image
-
-      // if this is second card to be flipped
-        // checkIfMatch(card1, card2)
-        // if checkIfMatch returns false
-          // flip both cards back over
 
       $frontImg.hide()
       // backImg.show()
@@ -63,50 +52,31 @@ function displaySixIndoImages(counter){
       counter += 1;
       selectedCardsFlip.push($backImg[0].src)
       console.log(selectedCardsFlip);
-      checkIfMatch(counter, $backImg, $frontImg, $back);
+      checkIfMatch(counter, $backImg, $frontImg, $back, $front);
 
     });
 
-    // $(`body`).on( 'click', '.card', function flipCard(event) {
-    //   event.stopImmediatePropagation();
-    //   //MOVE IT OUT OF THE FOR LOOP - DO PROPERGATION ATTACH TO BODY and specify which one's to target.
-    //   // track flipped cards
-    //
-    //   // show image
-    //
-    //   // if this is second card to be flipped
-    //     // checkIfMatch(card1, card2)
-    //     // if checkIfMatch returns false
-    //       // flip both cards back over
-    //
-    //   $(event.target).children('img.frontImg').hide()
-    //   // backImg.show()
-    //   $(event.target).children('div.back').toggleClass('invis')
-    //
-    //   counter += 1;
-    //   // selectedCardsFlip.push($backImg[0].src)
-    //   console.log(selectedCardsFlip);
-    //   // checkIfMatch(counter, $backImg, $frontImg, $back);
-    //
-    // });
+
   }
 }
 
 
 
 // returns boolean
-function checkIfMatch(count, $backImg, $frontImg, $back) {
+function checkIfMatch(count, $backImg, $frontImg, $back, $front) {
   // only have TWO CLICKS.
   console.log(count);
 
   if(count % 2 !== 0){
     card1 = $backImg[0]
-    card3 = $frontImg
+    card3 = $frontImg;
+    card1Back = $back;
 
     console.log(card1);
   }else if(count % 2 === 0){
     card2 = $backImg[0]
     card4 = $frontImg
+    card2Back = $back;
     selectedCardsFlip[0] === selectedCardsFlip[1]
 
 
@@ -118,8 +88,8 @@ function checkIfMatch(count, $backImg, $frontImg, $back) {
       console.log('no');
 
       function timeFlip(){
-        $(card1).toggleClass('invis');
-        $(card2).toggleClass('invis');
+        $(card1Back).toggleClass('invis');
+        $(card2Back).toggleClass('invis');
         $(card3).show()
         $(card4).show()
 

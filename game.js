@@ -3,6 +3,7 @@ let indoPicsArray = [];
 let shuffledIndoArray = [];
 let selectedCardsFlip = [];
 let counter = 0;
+let score = 0;
 let card1Back;
 let card2Back;
 
@@ -82,7 +83,10 @@ function checkIfMatch(count, $backImg, $frontImg, $back, $front) {
 
 
     if(selectedCardsFlip[0] === selectedCardsFlip[1]){
+      score++;
       console.log('yay');
+      console.log(score);
+      keepScore()
 
     }else{
       console.log('no');
@@ -124,6 +128,19 @@ function resetCards(){
   location.reload();
 }
 
+function keepScore(){
+  let $gameId = $('<div><id="game"></div>')
+  let $gameOver = $('<h2><id="gameOver" class="hide"></h2>')
+
+
+if(score === 6){
+  console.log('hi');
+
+  alert('Thank you for playing!')
+}
+  // $('#gameOver').addClass('hide')
+}
+
 
 
 function fetchImageUrls(url){
@@ -142,5 +159,7 @@ function fetchImageUrls(url){
 
   });
 }
+
+keepScore()
 $('#restart').on('click', resetCards);
 fetchImageUrls(URL);

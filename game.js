@@ -40,72 +40,47 @@ function displaySixIndoImages(counter){
     $card.append($front, $back);
     $myDivCardContainer.append($card);
 
-
-
     $(`.frontImg`).click(function flipCard(event) {
       event.stopImmediatePropagation();
 
-
       $frontImg.hide()
-      // backImg.show()
       $back.toggleClass('invis')
 
       counter += 1;
       selectedCardsFlip.push($backImg[0].src)
-      console.log(selectedCardsFlip);
       checkIfMatch(counter, $backImg, $frontImg, $back, $front);
-
     });
-
-
   }
 }
 
-
-
-// returns boolean
 function checkIfMatch(count, $backImg, $frontImg, $back, $front) {
-  // only have TWO CLICKS.
-  console.log(count);
-
-  if(count % 2 !== 0){
+  if (count % 2 !== 0){
     card1 = $backImg[0]
     card3 = $frontImg;
     card1Back = $back;
-
-    console.log(card1);
-  }else if(count % 2 === 0){
+  } else if (count % 2 === 0){
     card2 = $backImg[0]
     card4 = $frontImg
     card2Back = $back;
     selectedCardsFlip[0] === selectedCardsFlip[1]
 
-
-
     if(selectedCardsFlip[0] === selectedCardsFlip[1]){
       score++;
-      console.log('yay');
-      console.log(score);
-      keepScore()
-
-    }else{
-      console.log('no');
-
-      function timeFlip(){
-        $(card1Back).toggleClass('invis');
-        $(card2Back).toggleClass('invis');
-        $(card3).show()
-        $(card4).show()
-
-      }
+      checkWin();
+    } else {
       setTimeout(timeFlip, 1000)
-
     }
 
     selectedCardsFlip.length = 0;
     counter = 0;
-
   }
+}
+
+function timeFlip(){
+  $(card1Back).toggleClass('invis');
+  $(card2Back).toggleClass('invis');
+  $(card3).show()
+  $(card4).show()
 }
 
 function shuffle(array) {
@@ -128,20 +103,11 @@ function resetCards(){
   location.reload();
 }
 
-function keepScore(){
-  let $gameId = $('<div><id="game"></div>')
-  let $gameOver = $('<h2><id="gameOver" class="hide"></h2>')
-
-
-if(score === 6){
-  console.log('hi');
-
-  alert('Thank you for playing!')
+function checkWin(){
+  if(score === 6){
+    $('.container').prepend('<div class="winner-winner-chicken-dinner"><h1>Thank you for playing!</h1></div>');
+  }
 }
-  // $('#gameOver').addClass('hide')
-}
-
-
 
 function fetchImageUrls(url){
   $.getJSON(url, function(data){
@@ -156,10 +122,9 @@ function fetchImageUrls(url){
     } else {
       console.log('no images')
     }
-
   });
 }
 
-keepScore()
+checkWin()
 $('#restart').on('click', resetCards);
 fetchImageUrls(URL);
